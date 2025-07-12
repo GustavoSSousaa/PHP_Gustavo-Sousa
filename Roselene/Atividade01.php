@@ -1,93 +1,48 @@
-<!--CODIGO HTML DO FORMULARIO-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Saúde</title>
-    <!--ESCREVA O CSS ou UTILIZE BOOTSTRAP NO CÓDIGO ABAIXO-->
     <script src="Formulario.js"></script>
     <link rel="stylesheet" type="text/css" href="estilo_saude2.css">
 </head>
 <body>
-    <form action="#" id="Formulario" onsubmit="return valida()" method="post">
-        <!--DADOS PESSOAIS-->
+    <form action="Atividade01.php" id="Formulario" onsubmit="return valida()" method="post">
         <fieldset>
-            <div>
-                <h3>Cadastro e Visualização de Produtos no Estoque</h3>
-            </div>
-            <div id="linha">
-                <hr>
-            </div>
-            <br>
+            <h3>Cadastro e Visualização de Produtos no Estoque</h3>
+            <hr><br>
 
+            <h2>Gustavo Sousa</h2>
 
-            <div id="autor">
-                <h2>Gustavo Sousa</h2>
-            </div>
+            <fieldset>
+                <legend>Dados do Produto</legend>
+                <label>Nome do produto: <input type="text" name="nome"></label><br><br>
+                <label>S.K.U do produto: <input type="text" name="sku"></label><br><br>
+                <label>Quantidade do produto: <input type="text" name="qtda"></label><br><br>
+                <label>Preço do produto: <input type="text" name="preco"></label><br><br>
+                <input type="submit" value="Cadastro">
+            </fieldset>
 
+            <fieldset>
+                <legend>Dados Cadastrados</legend>
+                <div class="cadastro">
+                    <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $nome = $_POST['nome'];
+                        $sku = $_POST['sku'];
+                        $qtda = $_POST['qtda'];
+                        $preco = $_POST['preco'];
 
-            <table border="0"cellspacing="5">
-                <tr>    <!--NOME-->
-                    <td align="right">
-                        <label for="nome">Nome do produto: </label>
-                    </td>
-
-
-                    <td align="right">
-                        <input class="tamanho" type="text" name="nome" size="15" required>
-                    </td>
-                </tr>
-
-
-                <tr>    <!--POSTO DE SAÚDE-->
-                    <td align="right">
-                        <label for="postosaude">S.K.U: </label>
-                    </td>
-
-
-                    <td align="right">
-                        <input class="tamanho2" type="text" name="posto" size="15" maxlength="15">
-                    </td>
-                </tr>
-
-
-                <tr>    <!--DIABETES-->
-                    <td align="right">
-                        <label for="tipodiabete">Quantidade: </label>
-                    </td>
-
-
-                    <td align="right">
-                        <input class="tamanho" type="text" name="diabetes" required>
-                    </td>
-                </tr>
-
-
-                <tr>    <!--CARTÃO SUS-->
-                    <td align="right">
-                        <label for="cartaosus">Preço: </label>
-                    </td>
-
-
-                    <td align="right">
-                        <input type="text" required onkeypress="mascara(this, CartaoSus)" maxlength="10">
-                    </td>
-                </tr>
-
-
-               
-
-                <tr>
-                    <td class="botao">
-                        <input class="btn1" type="submit" onclick="return validar" value="Enviar">
-                        <input class="btn2" type="button" value="cancelar">
-                    </td>
-                </tr>
-            </table>
+                        echo "Nome : $nome<br><br>";
+                        echo "S.K.U : $sku<br><br>";
+                        echo "Quantidade : $qtda<br><br>";
+                        echo "Preço : $preco<br><br>";
+                    }
+                    ?>
+                </div>
+            </fieldset>
         </fieldset>
     </form>
-
-
 </body>
 </html>
